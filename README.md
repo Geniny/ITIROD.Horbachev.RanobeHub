@@ -1,2 +1,2 @@
 # ITIROD.Horbachev.RanobeHub
-front-end labs
+Горбачев Дмитрий 753502
