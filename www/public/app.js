@@ -1,13 +1,17 @@
 "use strict";
 
 import Home         from './views/pages/Home.js'
+import Ranobe       from './views/pages/Ranobe.js'
+
+import Utils        from './services/Utils.js'
 
 import Navbar       from './views/components/Navbar.js'
 import Header       from './views/components/Header.js'
 
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
-    '/'             : Home
+    '/'             : Home,
+    '/ranobe/:id'       : Ranobe
 };
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
@@ -29,7 +33,7 @@ const router = async () => {
     header.innerHTML = await Header.render();
     await Header.after_render();
     
-    /*
+    
     // Get the parsed URl from the addressbar
     let request = Utils.parseRequestURL()
 
@@ -38,10 +42,9 @@ const router = async () => {
     
     // Get the page from our hash of supported routes.
     // If the parsed URL is not in our list of supported routes, select the 404 page instead
-
-    let page = routes[parsedURL] ? routes[parsedURL] : Error404    */
-    content.innerHTML = await Home.render();
-    await Home.after_render();
+    let page = routes[parsedURL] ? routes[parsedURL] : Error404;
+    content.innerHTML = await page.render();
+    await page.after_render();
     
     
   

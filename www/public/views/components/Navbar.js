@@ -2,7 +2,7 @@ let Navbar = {
     render: async () => {
         let view =  
         `    
-        <a class="active" href="index.html">RanobeHub</a>
+        <a class="active" href="/">RanobeHub</a>
         <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
 
         <div id="profile_container" class="modal">

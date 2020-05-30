@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>RanobeHubs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.14.6/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.14.6/firebase-auth.js"></script>
     <script defer src="/__/firebase/7.14.6/firebase-database.js"></script>
     <script defer src="/__/firebase/7.14.6/firebase-messaging.js"></script>
     <script defer src="/__/firebase/7.14.6/firebase-storage.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <script type="module" src="app.js"></script>
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 </head>
 
@@ -24,12 +23,11 @@
     <header id="header_container"></header>
     <nav id="navbar"></nav>
 
-    <main id="page_container" class="container pageEntry">
+    <div id="page_container" class="container pageEntry">
         <article> Loading....</article>
-    </main>
+    </div>
 
     <div id="footer_container"></div>
-
 </body>
 
 
