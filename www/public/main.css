@@ -1,0 +1,621 @@
+/* DROPDOWN */
+.dropdown {
+    width: 18%;
+    margin-right: 1%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 17px;
+    height: 100%;
+    background-color: inherit;
+    margin: 0; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 10%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 2px;
+    border-bottom: 3px solid orange;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  color: white;
+}
+
+.auth_container {
+  margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  float: right;
+  position: relative;
+  min-width: 5%;
+}
+
+.dropdown:hover{
+    background-color: orange;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ------------- */
+
+
+.filter-content {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e2e2e2;
+}
+
+header {
+  background-image: url("img/screen.jpg");
+  min-height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+  z-index: 1;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  border: none;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar progress {
+  /* Positioning */
+  z-index: 5;
+
+  width: 100%;
+  height: 3px;
+  display: none;
+
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+
+  border: none;
+
+  background-color: transparent;
+
+  color: red;
+}
+
+#navbar progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+#navbar progress::-webkit-progress-value {
+  background-color: red;
+}
+
+#navbar progress::-moz-progress-bar {
+  background-color: red;
+}
+
+#navbar button { 
+  background-color: #333;
+  border: none; 
+  color: white; 
+  padding: 14px 16px;
+  font-size: 17px;
+  cursor: pointer;
+  float: right;
+  margin-right: 5%;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: orange;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+footer img{
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+footer {
+  margin: 2% 1%;
+  background-color: #e2e2e2;
+}
+
+footer p {
+  padding: 5px;
+  padding-left: 60px;
+  font-size: 18px;
+  align-items: center;
+}
+
+footer>hr {
+  margin-bottom: 5px;
+  color: orange;  
+}
+
+
+p[class |="text2"]{
+    color: red;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+form.search {
+    width: 81%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 95%;
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+form.search button {
+    width: 5%;
+    padding: 10px;
+    background: orange;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 45px;
+}
+
+main {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+.content {   
+     z-index: 0;
+}
+
+#mainPage .ranobe-content {
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+/* RANOBE----------------------------------------------------------------------------------------------------------------------------- */
+.ranobe-column {
+    min-width: 200px;
+    max-width: 24%;
+    flex: 1 1 24%;
+    text-align: center;
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+    border-left: 1px solid orange;
+    border-right: 1px solid orange;
+}
+
+.status-label {
+    padding: 2px 10px;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    color: #fff;
+    background: rgba(0,0,0,.7);
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.image-block  {
+    display: block;
+}
+
+.year-block {
+    position: absolute;
+    color: #fff;
+    font-weight: 400;
+    right: 0;
+    padding: 2px 10px;
+    background: rgba(0,0,0,.7);
+}
+
+.icons-row {
+    margin-bottom: 5px;
+    margin-left: 1px;
+}
+
+.ranobe-title {
+  background-color: #333;
+  font-size: 17px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.ranobe-column>a {
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    display: block;
+    color:  white;
+    text-decoration: none;
+}
+
+.ranobe-column img {
+    width: 100%;
+    height: auto;
+}
+
+.ranobe-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.intro {
+    width: 250px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.ranobe-info>h2{
+  text-align: left;
+}
+
+.ranobe-info>h1{
+  text-align: center;
+}
+
+.ranobe-info {
+  flex: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#readnow {
+border: 2px solid orange;
+background-color: white;
+color: orange;
+padding: 14px 28px;
+font-size: 17px;
+cursor: pointer;
+border-radius: 5px;
+text-decoration: none;
+float: right;
+margin-top: 100px;
+}
+
+#readnow:hover{
+
+background-color: orange;
+color: white;
+}
+
+#ranobePage > .ranobe-content{
+  border: 2px solid orange; 
+  position: relative;
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  padding: 15px 10px;
+  background-color: white;
+  flex-flow: row wrap;
+}
+
+.ranobe-img>img{
+max-width: 100%;
+height: 500px;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+}
+
+.rating > label {
+  color: #000;
+  font-size: 35px;
+}
+
+#ranobePage > a {
+  color: orange;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------- */
+
+.login_input {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+#signin_btn {
+background-color: white;
+border: 1px solid black;
+color: black;
+padding: 14px 20px;
+margin: 8px 0;
+cursor: pointer;
+float: left;
+}
+
+#signup_btn {
+background-color: #4CAF50;
+color: black;
+border: 1px solid black;
+padding: 14px 20px;
+margin: 8px 0;
+cursor: pointer;
+float: left;
+}
+
+button:hover {
+opacity: 0.8;
+}
+.container {
+padding: 16px;
+}
+
+span.psw {
+float: right;
+padding-top: 16px;
+}
+
+.modal {
+display: none;
+position: fixed;
+z-index: 100;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0,0.4);
+}
+
+.container>h1 {
+text-align: center;
+font-size: 25px;
+}
+
+.user-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.user-container>.user-info{
+  flex: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.user-container>img{
+  flex: 0 1 400px;
+  min-width: 100px;
+}
+
+.user-info h1{
+font-size: 20px;
+}
+
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto 15% auto;
+border: 1px solid #888;
+width: 50%; 
+border: 2px solid orange;
+border-radius: 5px;
+}
+
+.success {
+background-color: #4CAF50;
+width: 100%;
+border-radius: 5px;
+height: 35px;
+}
+.success:hover {background-color: #46a049;}
+
+
+.close {
+  float: right;
+  display: block;
+  color: #000;
+  font-size: 35px;
+}
+
+.close:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/* CHAPTER --------------------------------------------------------------------------------------------------------------------------*/
+
+.chapter-versions {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.chapter-version {
+  flex: 1 1 200px;
+  height: 60px;
+  max-width: 25%;
+  border: 2px solid black;
+  font-size: 2vw;
+  padding: 10px 5px;
+}
+
+.chapter-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  text-decoration: solid;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  gap: 25%;
+}
+
+.chapter-header > .ranobe-name {
+  color: black;
+  text-shadow: black;
+  font-size: 30px;
+}
+
+.chapter-header > .chapter-name {
+  text-decoration: none;
+  font-size: 28px;
+}
+
+hr {
+  color: orange;
+}
+
+.chapter-text {
+  font-size: 25px;
+  padding-top: 10px;
+  display: block;
+}
+
+#chapterPage {
+  margin-top: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 500px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+
+  .ranobe-column {
+    min-width: 100%;
+  }
+
+  #signin_btn {
+    padding: 8px 14px;
+  }
+
+  #signup_btn {   
+    padding: 8px 14px;
+  }
+
+  .dropdown .dropbtn {
+    font-size: 13px;
+  }
+
+  .user-info>h1 {
+    font-size: 15px;
+  }
+
+  .close {
+    font-size: 22px;
+  }
+
+  .user-container>img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .chapter-version > h1 {
+    font-size: 12px;
+  }
+
+  .chapter-header > .ranobe-name {
+    font-size: 19px;
+  }
+  
+  .chapter-header > .chapter-name {
+    font-size: 18px;
+  }
+
+  .chapter-version {
+    height: 40px;
+  }
+
+  .chapter-text {
+    font-size: 17px;
+  }
+}
+
+
