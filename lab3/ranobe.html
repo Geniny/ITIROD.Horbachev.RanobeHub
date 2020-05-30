@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <header>
         <div class="auth_container">
@@ -17,13 +19,14 @@
     </header>
 
     <nav id="navbar">
-        <a class="active" href="main.html">RanobeHub</a>
+        <a class="active" href="index.html">RanobeHub</a>
         <button onclick="profile()"><i class="fa fa-user"></i> Profile</button>
     </nav>
 
     <div id="signin_form" class="modal">
         <form class="modal-content" action="/action_page.php" method="post">
             <div class="container">
+                <span onclick="closeSignIn()" class="close" title="Close Modal">&times;</span>
                 <h1>Sign In</h1>
                 <hr>
                 <label for="uname"><b>Username</b></label>
@@ -38,6 +41,7 @@
     <div id="signup_form" class="modal">
         <form class="modal-content" action="/action_page.php">
             <div class="container">
+                <span onclick="closeSignUp()" class="close" title="Close Modal">&times;</span>
                 <h1>Sign Up</h1>
                 <hr>
                 <label for="email"><b>Email</b></label>
@@ -56,8 +60,10 @@
     <div id="profile_container" class="modal">
         <div class="modal-content">
             <div class="user-container">
-                <img src="img/screen.jpg" >
+                <img src="img/screen.jpg" height="300px" width="300px">
                 <div class="user-info">
+                    <span onclick="document.getElementById('profile_container').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
                     <h1>Status: user</h1>
                     <h1>Email: user@mail.ru</h1>
                 </div>
@@ -71,14 +77,14 @@
 
 
 
-    <main id = "ranobePage">
-        <div class="ranobe-content">   
-            <div class = "ranobe-img">
+    <main id="ranobePage">
+        <div class="ranobe-content">
+            <div class="ranobe-img">
                 <img src="img/oregairu8.jpg">
-            </div> 
-            <div class = "ranobe-info">
-                <h1>Chapter name</h1>
-                <hr/>
+            </div>
+            <div class="ranobe-info">
+                <h1>Ranobe name</h1>
+                <hr />
                 <h2>Status: </h2>
                 <h2>Genre: </h2>
                 <h2>Pages: </h2>
@@ -90,13 +96,14 @@
                     <label>☆</label>
                     <label>☆</label>
                     <label>☆</label>
-                </div>             
-                <a id = "readnow" href="chapter.html">Read now</a>
+                </div>
+                <a id="readnow" href="chapter.html">Read now</a>
             </div>
         </div>
-    </main>  
+    </main>
     <footer>@RanobeHub created by Horbachev Dmitriy</footer>
 </body>
+
 </html>
 
 <script>
@@ -117,10 +124,16 @@
         profile_container.style.display = 'block';
     }
 
-    window.onclick = function (event) 
-    {
-        if (event.target == profile_container) 
-        {
+    function closeSignUp() {
+        signup_form.style.display = 'none'
+    }
+
+    function closeSignIn() {
+        signin_form.style.display = 'none'
+    }
+
+    window.onclick = function (event) {
+        if (event.target == profile_container) {
             profile_container.style.display = "none";
         }
         if (event.target == signin_form) {
