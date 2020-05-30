@@ -171,11 +171,29 @@ header {
   padding-top: 60px;
 }
 
-footer {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 15px;
+footer img{
+  height: 50px;
+  width: 50px;
+  float: left;
 }
+
+footer {
+  margin: 2% 1%;
+  background-color: #e2e2e2;
+}
+
+footer p {
+  padding: 5px;
+  padding-left: 60px;
+  font-size: 18px;
+  align-items: center;
+}
+
+footer>hr {
+  margin-bottom: 5px;
+  color: orange;  
+}
+
 
 p[class |="text2"]{
     color: red;
@@ -236,7 +254,7 @@ main {
     gap: 1rem;
 }
 
-/* ranobe */
+/* RANOBE----------------------------------------------------------------------------------------------------------------------------- */
 .ranobe-column {
     min-width: 200px;
     max-width: 24%;
@@ -372,6 +390,9 @@ height: 500px;
   color: orange;
 }
 
+
+/* ----------------------------------------------------------------------------------------------------------------------------------- */
+
 .login_input {
 width: 100%;
 padding: 12px 20px;
@@ -432,10 +453,19 @@ font-size: 25px;
 }
 
 .user-container {
-display: flex;
-flex-direction: row;
-justify-content: flex-start;
-gap: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.user-container>.user-info{
+  flex: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.user-container>img{
+  flex: 0 1 400px;
+  min-width: 100px;
 }
 
 .user-info h1{
@@ -459,28 +489,133 @@ height: 35px;
 }
 .success:hover {background-color: #46a049;}
 
+
+.close {
+  float: right;
+  display: block;
+  color: #000;
+  font-size: 35px;
+}
+
+.close:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/* CHAPTER --------------------------------------------------------------------------------------------------------------------------*/
+
+.chapter-versions {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.chapter-version {
+  flex: 1 1 200px;
+  height: 60px;
+  max-width: 25%;
+  border: 2px solid black;
+  font-size: 2vw;
+  padding: 10px 5px;
+}
+
+.chapter-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  text-decoration: solid;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  gap: 25%;
+}
+
+.chapter-header > .ranobe-name {
+  color: black;
+  text-shadow: black;
+  font-size: 30px;
+}
+
+.chapter-header > .chapter-name {
+  text-decoration: none;
+  font-size: 28px;
+}
+
+hr {
+  color: orange;
+}
+
+.chapter-text {
+  font-size: 25px;
+  padding-top: 10px;
+  display: block;
+}
+
+#chapterPage {
+  margin-top: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------*/
+
+
 @media screen and (max-width: 500px) {
-span.psw {
-   display: block;
-   float: none;
-}
-.cancelbtn {
-   width: 100%;
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+
+  .ranobe-column {
+    min-width: 100%;
+  }
+
+  #signin_btn {
+    padding: 8px 14px;
+  }
+
+  #signup_btn {   
+    padding: 8px 14px;
+  }
+
+  .dropdown .dropbtn {
+    font-size: 13px;
+  }
+
+  .user-info>h1 {
+    font-size: 15px;
+  }
+
+  .close {
+    font-size: 22px;
+  }
+
+  .user-container>img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .chapter-version > h1 {
+    font-size: 12px;
+  }
+
+  .chapter-header > .ranobe-name {
+    font-size: 19px;
+  }
+  
+  .chapter-header > .chapter-name {
+    font-size: 18px;
+  }
+
+  .chapter-version {
+    height: 40px;
+  }
+
+  .chapter-text {
+    font-size: 17px;
+  }
 }
 
-.ranobe-column {
-  min-width: 100%;
-}
 
-#signin_btn {
-  padding: 8px 14px;
-}
-
-#signup_btn {   
-  padding: 8px 14px;
-}
-
-.dropdown .dropbtn {
-  font-size: 13px;
-}
-}
