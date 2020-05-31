@@ -12,8 +12,11 @@ let Navbar = {
                 <div class="user-info">
                     <span id="profile_close" class="close"
                         title="Close Modal">&times;</span>
-                    <h1>Status: user</h1>
-                    <h1>Email: user@mail.ru</h1>
+                    <div class = "text"> 
+                        <h1>Status: user</h1>
+                        <h1>Email: user@mail.ru</h1>
+                    </div>
+                    <button id="logout_btn" class="danger"> Logout </button>
                 </div>
             </div>
         </div>
@@ -33,10 +36,16 @@ let Navbar = {
 
         document.getElementById("profile_btn").addEventListener ("click",  () => {
             document.getElementById("profile_container").style.display = 'block';   
-        })
+        });
         document.getElementById("profile_close").addEventListener ("click",  () => {
             document.getElementById("profile_container").style.display = 'none';   
-        })
+        });
+        document.getElementById("logout_btn").addEventListener ("click",  () => {
+            document.getElementById("profile_container").style.display = 'none';
+            firebase.auth().signOut().then(function() {
+              }).catch(function(error) {
+              });   
+        });
 
         window.onscroll = function () { myFunction() };
 

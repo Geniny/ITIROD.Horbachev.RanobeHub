@@ -4,7 +4,7 @@ let Navbar = {
         `
         <hr>
         <a href="https://github.com/Geniny">
-            <img src="img/git.png">
+            <img id = "footer_img">
         </a>
         <p>Created by Dmitriy Horbachev</p> 
         `
@@ -12,6 +12,8 @@ let Navbar = {
     },
     after_render: async () => 
     {     
+        let footer_img = document.getElementById('footer_img');
+        firebase.storage().ref().child('git.png').getDownloadURL().then( (url) => footer_img.src = url);
     }
 
 }

@@ -84,7 +84,9 @@ let Header = {
             } 
             else 
             {
-                document.getElementById("profile_btn").style.display = 'none';
+                document.getElementById("profile_btn").style.display = 'none';           
+                document.getElementById("signin_btn").style.display = 'block';
+                document.getElementById("signup_btn").style.display = 'block';
             }
         });
 
