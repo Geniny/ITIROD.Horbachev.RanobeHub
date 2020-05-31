@@ -14,7 +14,7 @@ let render_ranobes = async (ranobes) => {
         let ref = document.createElement('a');
         ref.href = '#/ranobe/' + element.id;
         ref.innerHTML =
-        `      
+            `      
         <div class="status-label">${element.data().status}</div>
         <span class="year-block">${element.data().year}</span>
         `
@@ -46,7 +46,7 @@ class Home {
     async render() {
         this.ranobes = firebase.firestore().collection("ranobes");
         let view =
-        `    
+            `    
         <main id="mainPage">
             <div class="filter-content">
                 <div class="dropdown">
@@ -79,9 +79,21 @@ class Home {
         })
         document.getElementById("search_btn").addEventListener("click", async () => {
             let search = document.getElementById("search_field");
-            if (search.value != '')
-            {
-                await render_ranobes(this.ranobes.where("name", "==", search.value));
+            if (search.value != '') {
+                await render_ranobes(this.ranobes.where("lower_name", "array-contains-any", search.value.toLowerCase().split(" ")));
+            }
+        })
+        document.getElementById("mainPage").addEventListener("keydown", async (event) => {
+            if (event.keyCode == 13) {
+                let search = document.getElementById("search_field");
+                if (search.value != '') {
+                    await render_ranobes(this.ranobes.where("lower_name", "array-contains-any", search.value.toLowerCase().split(" ")));
+                }
+                else
+                {
+                    
+        await render_ranobes(this.ranobes);
+                }
             }
         })
         await render_ranobes(this.ranobes);

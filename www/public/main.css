@@ -670,8 +670,9 @@ hr {
 /* ----------------------------------------------------------------------------------------------------------------------------------*/
 
 #errorPage {
-  min-width: 1300px;
+  max-width: 1300px;
   height: 550px;
+  overflow: hidden;
 }
 
 .center {
@@ -692,6 +693,12 @@ hr {
 
 
 @media screen and (max-width: 500px) {
+
+  #error-page { 
+    max-width: 500px;
+    height: 550px;
+  }
+
   span.psw {
     display: block;
     float: none;
