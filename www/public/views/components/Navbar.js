@@ -1,5 +1,11 @@
-let Navbar = {
-    render: async () => {
+class Navbar {
+
+    constructor()
+    {
+        this.user = null;
+    }
+
+    async render() {
         let view =  
         `    
         <a class="active" href="/">RanobeHub</a>
@@ -13,8 +19,8 @@ let Navbar = {
                     <span id="profile_close" class="close"
                         title="Close Modal">&times;</span>
                     <div class = "text"> 
-                        <h1>Status: user</h1>
-                        <h1>Email: user@mail.ru</h1>
+                        <h1 id = "u_status"></h1>
+                        <h1 id = "u_email"></h1>
                     </div>
                     <button id="logout_btn" class="danger"> Logout </button>
                 </div>
@@ -23,18 +29,28 @@ let Navbar = {
     </div>
         `
         return view
-    },
-    after_render: async () => 
-    {     
-        var user = firebase.auth().currentUser;
-        var profile = document.getElementById("profile_btn");
-        if (user) {
-            profile.style.display = 'block';
-        } else {
-            profile.style.display = 'none';
-        }
-
+    }
+    async after_render() 
+    {       
         document.getElementById("profile_btn").addEventListener ("click",  () => {
+            let status = document.getElementById("u_status");
+            let email = document.getElementById("u_email");
+            var profile = document.getElementById("profile_btn");
+            firebase.auth().onAuthStateChanged(async function (user) {
+                if (user) 
+                {                       
+                    let curUser = await firebase.firestore().collection("users").doc(user.email).get();
+                    profile.style.display = 'block';
+                    email.innerHTML = "Email: " + curUser.id;
+                    status.innerHTML = "Status: " + curUser.data().status;
+                } 
+                else 
+                {
+                    email.innerHTML = "Email: ";
+                    status.innerHTML = "Status: ";
+                    profile.style.display = 'none';
+                }
+            });
             document.getElementById("profile_container").style.display = 'block';   
         });
         document.getElementById("profile_close").addEventListener ("click",  () => {
@@ -59,8 +75,9 @@ let Navbar = {
                 navbar.classList.remove("sticky");
             }
         }
+
     }
 
 }
 
-export default Navbar;
+export default new Navbar();

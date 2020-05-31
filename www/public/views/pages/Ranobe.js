@@ -6,89 +6,109 @@ let getRanobe = async() => {
 
 import Utils from './../../services/Utils.js'
 
-let getRanobe = async (str) =>
-{
-    return firebase.firestore().collection("ranobes").doc(str).get().then((doc) => doc);
-}
+class Ranobe {
 
-let Ranobe = {
-    render : async () => {   
-        let request = Utils.parseRequestURL()
-        let ranobeInfo = await getRanobe(request.id);
-        let view = 
+    constructor() {
+        this.ranobe = null;
+        this.request = null;
+    }
+
+    async render() {
+        this.request = Utils.parseRequestURL()
+        this.ranobe = await firebase.firestore().collection("ranobes").doc(this.request.id).get();
+
+        let view =
         `
         <main id="ranobePage">
             <div class="ranobe-content">
                 <div class="ranobe-img">
-                    <img id = "${ranobeInfo.id}">
                 </div>
-                <div class="ranobe-info">
-                    <h1>${ranobeInfo.data().name}</h1>
-                    <hr />
-                    <h2>Status: ${ranobeInfo.data().status}</h2>
-                    <h2>Genre: ${ranobeInfo.data().genre.forEach(element => `${element} hi`)}</h2>
-                    <h2>Chapters: </h2>
-                    <h2>Author: ${ranobeInfo.data().author}</h2>
-                    <h2>Year: ${ranobeInfo.data().year}</h2>
-                    <div class="rating">
-                        <label id = "1-rt">☆</label>
-                        <label id = '2-rt'>☆</label>
-                        <label id = '3-rt'>☆</label>
-                        <label id = '4-rt'>☆</label>
-                        <label id = '5-rt'>☆</label>
+                <div class = "ranobe-content-info">
+                    <div class = "ranobe-header">
+                        <h1 id = 'rnb_name'></h1>
+                        <hr />
                     </div>
-                    <a id="readnow" href="#/ranobe/${ranobeInfo.id}/chapter/1">Read now</a>
+                    <div class="ranobe-info">
+                        <h2 id = "rnb_status"></h2>
+                        <h2 id = 'rnb_genre'></h2>
+                        <h2 id = "rnb_author"></h2>
+                        <h2 id = "rnb_year"></h2>
+                        <div class="rating">
+                            <label id = "1-rt">☆</label>
+                            <label id = '2-rt'>☆</label>
+                            <label id = '3-rt'>☆</label>
+                            <label id = '4-rt'>☆</label>
+                            <label id = '5-rt'>☆</label>
+                        </div>
+                    </div>
+                    <div class = "ranobe-action">
+                        <a id="readnow">Read now</a>
+                    </div>
                 </div>
             </div>
         </main>
         `
         return view;
     }
-    , after_render: async () => {
-        let request = Utils.parseRequestURL()
+
+    async after_render() {
         let rt_1 = document.getElementById("1-rt");
         let rt_2 = document.getElementById("2-rt");
         let rt_3 = document.getElementById("3-rt");
         let rt_4 = document.getElementById("4-rt");
         let rt_5 = document.getElementById("5-rt");
+        let genre = document.getElementById("rnb_genre");
+        let name = document.getElementById("rnb_name");
+        let status = document.getElementById("rnb_status");
+        let author = document.getElementById("rnb_author");
+        let year = document.getElementById("rnb_year");
+        let read = document.getElementById("readnow");
+        let ranobe_img =  document.getElementsByClassName("ranobe-img")[0];
+        let img = document.createElement('img')
+        img.setAttribute('id', this.ranobe.id);
+        ranobe_img.appendChild(img);
 
-        let ranobeInfo = await getRanobe(request.id);
-        let ranobe_img = document.getElementById(ranobeInfo.id);
-        firebase.storage().ref().child('ranobes/'+ ranobeInfo.id + '.jpg').getDownloadURL().then( (url) => ranobe_img.src = url);
-        let rating = ranobeInfo.data().rating;
-        if (rating <= 5 && rating >= 4.5)
+        name.innerHTML = this.ranobe.data().name;
+        status.innerHTML = "Status: " + this.ranobe.data().status; 
+        author.innerHTML = "Author: " + this.ranobe.data().author;
+        year.innerHTML = "Year: " + this.ranobe.data().year;
+        let genres = ""
+        for (var key in this.ranobe.data().genre)
         {
+            genres += this.ranobe.data().genre[key] + " ";
+        }
+        genre.innerHTML = "Genres: " + genres;
+        read.href = `#/ranobe/${this.ranobe.id}/chapter/1`;
+        firebase.storage().ref().child('ranobes/' + this.ranobe.id + '.jpg').getDownloadURL().then((url) => img.src = url);
+        let rating = this.ranobe.data().rating;
+        if (rating <= 5 && rating >= 4.5) {
             rt_1.className = 'checked';
             rt_2.className = 'checked';
             rt_3.className = 'checked';
             rt_4.className = 'checked';
             rt_5.className = 'checked';
         }
-        else if (rating < 4.5 && rating >= 3.5)
-        {
+        else if (rating < 4.5 && rating >= 3.5) {
             rt_1.className = 'checked';
             rt_2.className = 'checked';
             rt_3.className = 'checked';
             rt_4.className = 'checked';
         }
-        else if (rating < 3.5 && rating >= 2.5)
-        {
+        else if (rating < 3.5 && rating >= 2.5) {
             rt_1.className = 'checked';
             rt_2.className = 'checked';
             rt_3.className = 'checked';
         }
-        else if (rating < 2.5 && rating >= 1.5)
-        {
+        else if (rating < 2.5 && rating >= 1.5) {
             rt_1.className = 'checked';
             rt_2.className = 'checked';
         }
-        else
-        {
+        else {
             rt_1.className = 'checked';
         }
-        
+
     }
- 
- }
- 
- export default Ranobe;
+
+}
+
+export default new Ranobe();

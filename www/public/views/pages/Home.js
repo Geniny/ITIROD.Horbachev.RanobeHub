@@ -3,14 +3,11 @@
 // --------------------------------
 
 
-let getRanobes = async () => {
-    return firebase.firestore().collection("ranobes").get();
-}
-
-let render_ranobes = async(ranobes) => {
+let render_ranobes = async (ranobes) => {
     let ranobe_content = document.getElementsByClassName("ranobe-content")[0];
-    ranobes.forEach(element => 
-    {
+    ranobe_content.innerHTML = "";
+    ranobes = await ranobes.get();
+    ranobes.forEach(element => {
         let rnb = document.createElement('div');
         rnb.className = 'ranobe-column';
 
@@ -29,19 +26,25 @@ let render_ranobes = async(ranobes) => {
 
         let img = document.createElement('img');
         img.alt = element.data().name;
-        firebase.storage().ref().child('ranobes/'+ element.id + '.jpg').getDownloadURL().then( (url) => img.src = url);
+        firebase.storage().ref().child('ranobes/' + element.id + '.jpg').getDownloadURL().then((url) => img.src = url);
 
         ref.appendChild(img);
         rnb.appendChild(ref);
         rnb.appendChild(ref2);
 
-        ranobe_content.appendChild(rnb);   
-              
+        ranobe_content.appendChild(rnb);
+
     });
 }
 
-let Home = {
-    render: async () => {
+class Home {
+
+    constructor() {
+        this.ranobes = null;
+    }
+
+    async render() {
+        this.ranobes = firebase.firestore().collection("ranobes");
         let view =
         `    
         <main id="mainPage">
@@ -51,14 +54,13 @@ let Home = {
                     </button>
                     <div class="dropdown-content">
                         <span id ="name_filter">Name</span>
-                        <a href="#">Genre</a>
-                        <a href="#">Rating</a>
+                        <span id = "rating_filter">Rating</spam>
                     </div>
                 </div>
-                <form class="search" action="action_page.php">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                <div class="search">
+                    <input id = "search_field" type="text" placeholder="Search.." name="search">
+                    <button id = "search_btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
             </div>
 
             <div class="ranobe-content">
@@ -67,17 +69,26 @@ let Home = {
         `
         return view
     }
-    , 
-    after_render: async () => {
-        let ranobes = await getRanobes();
+
+    async after_render() {
         document.getElementById("name_filter").addEventListener("click", async () => {
-            await render_ranobes(ranobes.sort());
+            await render_ranobes(this.ranobes.orderBy("name"));
         })
-        await render_ranobes(ranobes);
-        
+        document.getElementById("rating_filter").addEventListener("click", async () => {
+            await render_ranobes(this.ranobes.orderBy("rating", "desc"));
+        })
+        document.getElementById("search_btn").addEventListener("click", async () => {
+            let search = document.getElementById("search_field");
+            if (search.value != '')
+            {
+                await render_ranobes(this.ranobes.where("name", "==", search.value));
+            }
+        })
+        await render_ranobes(this.ranobes);
+
 
     }
 
 }
 
-export default Home;
+export default new Home();

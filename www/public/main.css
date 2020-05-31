@@ -220,14 +220,14 @@ p[class |="text2"]{
 }
 
 
-form.search {
+div.search {
     width: 81%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-form.search input[type=text] {
+div.search input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -236,7 +236,7 @@ form.search input[type=text] {
     border-radius: 5px;
 }
 
-form.search button {
+div.search button {
     width: 5%;
     padding: 10px;
     background: orange;
@@ -345,32 +345,15 @@ main {
     padding-right: auto;
 }
 
+
 .ranobe-info>h2{
   text-align: left;
-}
-
-.ranobe-info>h1{
-  margin-top: 20px;
-  text-align: center;
 }
 
 .ranobe-info {
   flex: 100px;
   padding-left: 15px;
   padding-right: 15px;
-}
-
-#readnow {
-  border: 2px solid orange;
-  background-color: white;
-  color: orange;
-  padding: 14px 28px;
-  font-size: 17px;
-  cursor: pointer;
-  border-radius: 5px;
-  text-decoration: none;
-  float: right;
-  margin-top: 7%;
 }
 
 #readnow:hover{
@@ -390,9 +373,53 @@ color: white;
   flex-flow: row wrap;
 }
 
+.ranobe-content-info{
+  flex: 1 1 300px;
+  display: flex; 
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.ranobe-header {
+  width: 100%;
+}
+
+.ranobe-header > h1{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ranobe-header > hr {
+  color: orange;
+}
+
+.ranobe-action {
+  width: 100%;
+}
+
+.ranobe-action>a {
+  border: 2px solid orange;
+  background-color: white;
+  color: orange;
+  padding: 14px 28px;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  float: right;
+  margin-top: 7%;
+}
+
+.ranobe-img {
+  flex: 2 2  200px;
+  width: 30%;
+  max-width: 450px;
+}
+
 .ranobe-img>img{
-max-width: 100%;
-height: 500px;
+  max-width: 100%;
+  height: 500px;
 }
 
 .rating {
@@ -425,7 +452,7 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
-display: none;
+display: block;
 }
 
 #signin_btn {
@@ -575,6 +602,22 @@ height: 35px;
   flex-flow: row nowrap;
 }
 
+.chapter-add {
+  border: 2px solid green;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  height: 60px;
+  margin-right: 10px;
+  font-size: 2vw;
+}
+
+.chapter-add:hover {
+  cursor: pointer;
+  background-color: green;
+  color: white;
+}
+
 .chapter-version {
   flex: 1 1 200px;
   height: 60px;
@@ -586,12 +629,12 @@ height: 35px;
 
 .chapter-header {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  text-decoration: solid;
+  flex-flow: column nowrap;
   padding-top: 3%;
   padding-bottom: 3%;
-  gap: 25%;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
 }
 
 .chapter-header > .ranobe-name {
@@ -615,6 +658,9 @@ hr {
 }
 
 #chapterPage {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
   margin-top: 20px;
   padding-left: 5%;
   padding-right: 5%;
@@ -622,6 +668,27 @@ hr {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------------*/
+
+#errorPage {
+  min-width: 1300px;
+  height: 550px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: Helvetica;
+  background: url('img/404.gif') no-repeat 100% 50%;
+}
+
+.center h1 {
+  font-size: 144px;
+  font-weight: 100;
+  color: white;
+}
+
 
 
 @media screen and (max-width: 500px) {
@@ -674,7 +741,7 @@ hr {
     font-size: 18px;
   }
 
-  .chapter-version {
+  .chapter-version,.chapter-add {
     height: 40px;
   }
 

@@ -5,7 +5,7 @@ let Header = {
         <div class="auth_container">
             <button id="signin_btn">Sign
                     In</button>
-            <button id="signup_btn" onclick="signUp()">Sign
+            <button id="signup_btn">Sign
                     Up</button>
         </div>
 
@@ -25,22 +25,22 @@ let Header = {
         </div>
 
         <div id="signup_form" class="modal">
-            <form class="modal-content" action="/action_page.php">
+            <div class="modal-content">
                 <div class="container">
                     <span id = "signup_close" class="close" title="Close Modal">&times;</span>
                     <h1>Sign Up</h1>
                     <hr>
                     <label for="email"><b>Email</b></label>
-                    <input class="login_input" type="text" placeholder="Enter Email" name="email" required>
+                    <input id = "email_field_r" class="login_input" type="text" placeholder="Enter Email" name="email" required>
 
                     <label for="psw"><b>Password</b></label>
-                    <input class="login_input" type="password" placeholder="Enter Password" name="psw" required>
+                    <input id = "password_field_r" class="login_input" type="password" placeholder="Enter Password" name="psw" required>
 
                     <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input class="login_input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                    <button type="submit" class="success">Sign Up</button>
+                    <input id = "repeat_password_field_r" class="login_input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                    <button id = "signup_submit_btn" type="submit" class="success">Sign Up</button>
                 </div>
-            </form>
+            </div>
         </div>
         `
         return view
@@ -59,8 +59,8 @@ let Header = {
             document.getElementById("signup_form").style.display = 'none';
         })
         document.getElementById("signin_submit_btn").addEventListener("click", () => {
-            var email = document.getElementById("email_field");
-            var password = document.getElementById("password_field");
+            let email = document.getElementById("email_field");
+            let password = document.getElementById("password_field");
             firebase.auth().signInWithEmailAndPassword(email.value, password.value).catch(function (error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -71,7 +71,39 @@ let Header = {
                     alert(errorMessage);
                 }
             });
-        })
+        });
+
+        document.getElementById("signup_submit_btn").addEventListener("click", () => {
+            let email = document.getElementById("email_field_r");
+            let password = document.getElementById("password_field_r");
+            let repeat_password = document.getElementById("repeat_password_field_r");
+
+            if (password.value !== repeat_password.value)
+            {           
+                repeat_password.value = '';
+                return;
+            }
+
+            firebase.auth().createUserWithEmailAndPassword(email.value, password.value).catch(function(error) {
+
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage);
+            });
+
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) 
+                {
+                    firebase.firestore().collection("users").doc(user.email).set({email: user.email, password: password.value, avatar: "deffault", status: "user"});
+                } 
+                else 
+                {
+                }
+            });
+            
+
+
+        });
 
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) 
