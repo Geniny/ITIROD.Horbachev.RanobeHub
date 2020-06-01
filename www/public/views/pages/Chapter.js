@@ -11,9 +11,15 @@ class Chapter {
         this.request = null;
         this.translates = null;
         this.view = null;
+        this.next = null;
+        this.previous = null;
+        this.translatesCount = -1;
     }
 
-    async render() {
+    async render() {    
+        this.next = null;
+        this.previous = null;
+        this.translatesCount = -1;
         this.request = Utils.parseRequestURL();
         let ranobeRef = firebase.firestore().collection("ranobes").doc(this.request.id);
         let chapterRef = ranobeRef.collection('chapters').doc(this.request.id2);
@@ -38,24 +44,44 @@ class Chapter {
                                 </div>
                                 <hr>
                             </div>
+                            <div class = "chapter-text-container"></div>
                             <div class = "chapter-actions">
+                                <a id="previous" >&laquo;</a>
+                                <a id="next" >&raquo;</a>
+                            </div>
+                            <div id="add_form" class="modal">
+                                <div class="modal-content">
+                                    <div class="container">
+                                        <span id = "add_chp_close" class="close" title="Close Modal">&times;</span>
+                                        <h1>Add chapter</h1>
+                                        <hr>
+                                        <label for = "version"><b>Version name</b></label>
+                                        <input id = "chp_version_name" class="login_input" type="text" placeholder="Enter version name" name="version" required>                                       
+                                        <label for = "chp_text"><b>Chapter text</b></label>
+                                        <textarea id = "chp_textarea" class = "text-input" name="chp_text"  placeholder="Enter text" required></textarea>
+                                        <button id = "add_submit_btn" type="submit" class="success">Add</button>
+                                    </div>
+                                </div>
                             </div>
                         </main>
                         `
                         this.chapter = cdoc;
                         this.translates = await chapterRef.collection("translates").get();
-
+                        let nextChp = parseInt(cdoc.id) + 1;
+                        let prevChp = parseInt(cdoc.id) - 1;
+                        await ranobeRef.collection('chapters').doc(nextChp.toString()).get().then( (doc) => { if (doc.exists) {this.next = doc.id;
+                            console.log("Document data:", doc.data()); }});                       
+                        await ranobeRef.collection('chapters').doc(prevChp.toString()).get().then( (doc) => { if (doc.exists) {this.previous = doc.id}});
                     }
                     else {
                         this.view = Error.render();
                     }
-                }
-                )
-                    .catch(function (error) {
+                }).catch(function (error) {
                         console.log("Error getting document:", error);
-                    });
+                });
             }
-            else {
+            else 
+            {
                 this.view = Error.render();
             }
         }).catch(function (error) {
@@ -69,18 +95,51 @@ class Chapter {
         if (this.chapter != null) {
             let chapterName = document.getElementsByClassName("chapter-name")[0];
             let chapterVersions = document.getElementsByClassName("chapter-versions")[0];
-            let chapterPage = document.getElementById('chapterPage');
+            let chapterPage = document.getElementsByClassName('chapter-text-container')[0];
+            let next = document.getElementById('next');
+            let previous = document.getElementById('previous');
             chapterName.innerHTML = this.chapter.data().name;
 
+            if (this.next != null)
+            {
+                next.style.display = 'block';
+                next.setAttribute('href','#/ranobe/' + this.ranobe.id + '/chapter/' + this.next);
+            }
+            if (this.previous != null)
+            {           
+                previous.style.display = 'block';
+                previous.setAttribute('href','#/ranobe/' + this.ranobe.id + '/chapter/' + this.previous);
+            }
+
+            let ref = firebase.firestore().collection("ranobes")
+            .doc(this.ranobe.id).collection("chapters")
+            .doc(this.chapter.id).collection('translates')
+            .doc(this.translatesCount.toString());
             firebase.auth().onAuthStateChanged(async function (user) {
                 if (user) {
-
                     let curUser = await firebase.firestore().collection("users").doc(user.email).get();
                     if (curUser.data().status == 'translater') {
                         let add_btn = document.createElement('button');
+                        let close = document.getElementById("add_chp_close");
+                        let add_chp = document.getElementById("add_submit_btn");
+                        close.addEventListener("click", () => {
+                            document.getElementById("add_form").style.display = 'none';
+                        });
+
+                        add_chp.addEventListener("click", async () => {
+                            let versionName = document.getElementById('chp_version_name');
+                            let text = document.getElementById('chp_textarea');                        
+                            await ref.set({name: versionName.value, text: text.value });
+                            document.getElementById("add_form").style.display = 'none';
+
+                        });
+
                         add_btn.className = 'chapter-add';
                         add_btn.setAttribute('id', 'add_btn');
                         add_btn.innerHTML = `<i style = "font-size: 25px;" class="fa fa-plus" aria-hidden="true"></i>`;
+                        add_btn.addEventListener("click", () => {
+                            document.getElementById("add_form").style.display = 'block';
+                        })
                         chapterVersions.appendChild(add_btn);
                     }
                 }
@@ -111,6 +170,7 @@ class Chapter {
                 });
                 span.innerHTML = element.data().name;
                 chapterVersions.appendChild(span);
+                this.translatesCount ++;
             });
         }
     }

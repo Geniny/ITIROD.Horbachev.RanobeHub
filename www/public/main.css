@@ -557,7 +557,7 @@ font-size: 25px;
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto 15% auto;
+  margin: 10% auto 15% auto;
   border: 1px solid #888;
   width: 50%; 
   border: 2px solid orange;
@@ -596,6 +596,34 @@ height: 35px;
 }
 
 /* CHAPTER --------------------------------------------------------------------------------------------------------------------------*/
+
+.text-input {
+  height: 300px;
+  width: 100%;
+  resize: none;
+}
+
+.chapter-actions {
+  padding-bottom: 20px;
+}
+
+#previous {
+  float: left;
+  display: none;
+}
+
+#next {
+  float: right;
+  display: none;
+}
+
+.chapter-actions a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 50px; 
+   text-decoration: none;
+   color: orange;
+}
 
 .chapter-versions {
   display: flex;
@@ -640,16 +668,20 @@ height: 35px;
 .chapter-header > .ranobe-name {
   color: black;
   text-shadow: black;
-  font-size: 30px;
+  font-size: 5vw;
 }
 
 .chapter-header > .chapter-name {
   text-decoration: none;
-  font-size: 28px;
+  font-size: 3vw;
 }
 
 hr {
   color: orange;
+}
+
+.chapter-text-container {
+  margin-bottom: 10px;
 }
 
 .chapter-text {
@@ -665,6 +697,7 @@ hr {
   padding-left: 5%;
   padding-right: 5%;
   background-color: white;
+  border-radius: 5px;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------------*/
@@ -737,7 +770,7 @@ hr {
   }
 
   .chapter-version > h1 {
-    font-size: 2vw;
+    font-size: 4vw;
   }
 
   .chapter-header > .ranobe-name {
@@ -766,6 +799,14 @@ hr {
   
   .ranobe-info>h1{
     font-size: 23px;
+  }
+
+  .footer img {
+    height: 25px;
+    width: 25px;
+  }
+  .footer p {
+    font-size: 10px;
   }
 }
 

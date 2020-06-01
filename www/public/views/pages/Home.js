@@ -71,10 +71,13 @@ class Home {
     }
 
     async after_render() {
+        var dropdown = document.getElementsByClassName("dropdown-content")[0];
         document.getElementById("name_filter").addEventListener("click", async () => {
+            dropdown.style.display = 'none';
             await render_ranobes(this.ranobes.orderBy("name"));
         })
         document.getElementById("rating_filter").addEventListener("click", async () => {
+            dropdown.style.display = 'none';
             await render_ranobes(this.ranobes.orderBy("rating", "desc"));
         })
         document.getElementById("search_btn").addEventListener("click", async () => {
@@ -89,10 +92,8 @@ class Home {
                 if (search.value != '') {
                     await render_ranobes(this.ranobes.where("lower_name", "array-contains-any", search.value.toLowerCase().split(" ")));
                 }
-                else
-                {
-                    
-        await render_ranobes(this.ranobes);
+                else {
+                    await render_ranobes(this.ranobes);
                 }
             }
         })

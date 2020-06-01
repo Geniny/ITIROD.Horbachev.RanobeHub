@@ -1,5 +1,5 @@
-let Navbar = {
-    render: async () => {
+class Footer {
+    async render() {
         let view =  
         `
         <hr>
@@ -9,13 +9,12 @@ let Navbar = {
         <p>Created by Dmitriy Horbachev</p> 
         `
         return view
-    },
-    after_render: async () => 
+    }
+    async after_render()
     {     
         let footer_img = document.getElementById('footer_img');
         firebase.storage().ref().child('git.png').getDownloadURL().then( (url) => footer_img.src = url);
     }
-
 }
 
-export default Navbar;
+export default new Footer();
