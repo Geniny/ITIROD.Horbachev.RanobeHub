@@ -564,7 +564,13 @@ font-size: 25px;
   margin-right: 1%;
 }
 
-.user-info>button {
+.profile-actions {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+
+.profile-actions > button#logout_btn {
   flex: 0 0 50px;
   max-width: 100px;
   max-height: 45px;
@@ -575,8 +581,24 @@ font-size: 25px;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
-  float: right;
   border-radius: 5px;
+  margin-right: 1%;
+  margin-bottom: 1%;
+}
+
+.profile-actions > button#upload_btn {
+  flex: 0 0 50px;
+  max-width: 100px;
+  max-height: 45px;
+  align-self: flex-end;
+  border: 2px solid green;
+  background-color: white;
+  color: green;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: none;
   margin-right: 1%;
   margin-bottom: 1%;
 }

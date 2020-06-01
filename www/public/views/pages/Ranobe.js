@@ -13,7 +13,6 @@ class Ranobe {
         this.request = Utils.parseRequestURL()
         await firebase.firestore().collection("ranobes").doc(this.request.id).get().then((doc) => {
             if (doc.exists) {
-                console.log("Document data:", doc.data());
                 this.view =
                 `
                 <main id="ranobePage">
@@ -33,35 +32,23 @@ class Ranobe {
                                 <div class="rating">
                                     <label id = "rt-1">☆</label>
                                     <label id = 'rt-2'>☆</label>
-                                    <label id = '3-rt'>☆</label>
-                                    <label id = '4-rt'>☆</label>
-                                    <label id = '5-rt'>☆</label>
+                                    <label id = 'rt-3'>☆</label>
+                                    <label id = 'rt-4'>☆</label>
+                                    <label id = 'rt-5'>☆</label>
                                 </div>
                             </div>
                             <div class = "ranobe-action">
-                                <span id = "rnb_rate">☆</span>
                                 <a id="readnow">Read now</a>
                             </div>
                         </div>
                     </article>
 
-                    <div id="rate_form" class="modal">
-                        <div class="modal-content">
-                            <div class="container">
-                                <div class = "close">
-                                    <button id = "rate_close" title="Close Modal">&times;</button>
-                                </div>
-                                <h1>Rate this title</h1>
-                                <hr>
-                                <i class="far fa-meh-rolling-eyes"></i>
-                            </div>
-                        </div>
-                    </div>
                 </main>
                 `
                 this.ranobe = doc;
             }
-            else {
+            else 
+            {
                 this.view = Error.render();
             }
         }).catch(function (error) {
@@ -75,9 +62,9 @@ class Ranobe {
         if (this.ranobe != null) {
             let rt_1 = document.getElementById("rt-1");
             let rt_2 = document.getElementById("rt-2");
-            let rt_3 = document.getElementById("3-rt");
-            let rt_4 = document.getElementById("4-rt");
-            let rt_5 = document.getElementById("5-rt");
+            let rt_3 = document.getElementById("rt-3");
+            let rt_4 = document.getElementById("rt-4");
+            let rt_5 = document.getElementById("rt-5");
             let genre = document.getElementById("rnb_genre");
             let name = document.getElementById("rnb_name");
             let status = document.getElementById("rnb_status");
@@ -86,14 +73,6 @@ class Ranobe {
             let read = document.getElementById("readnow");
             let ranobe_img = document.getElementsByClassName("ranobe-img")[0];
             let img = document.createElement('img')
-            let rate_btn = document.getElementById('rnb_rate');
-
-            rate_btn.addEventListener("click", () => {
-                document.getElementById("rate_form").style.display = 'block';
-            })
-            document.getElementById("rate_close").addEventListener("click", () => {
-                document.getElementById("rate_form").style.display = 'none';
-            })
 
             img.setAttribute('id', this.ranobe.id);
             ranobe_img.appendChild(img);

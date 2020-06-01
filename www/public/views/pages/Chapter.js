@@ -55,9 +55,9 @@ class Chapter {
                                         <span id = "add_chp_close" class="close" title="Close Modal">&times;</span>
                                         <h1>Add chapter</h1>
                                         <hr>
-                                        <label for = "version"><b>Version name</b></label>
+                                        <label for = "chp_version_name"><b>Version name</b></label>
                                         <input id = "chp_version_name" class="login_input" type="text" placeholder="Enter version name" name="version" required>                                       
-                                        <label for = "chp_text"><b>Chapter text</b></label>
+                                        <label for = "chp_textarea" ><b>Chapter text</b></label>
                                         <textarea id = "chp_textarea" class = "text-input" name="chp_text"  placeholder="Enter text" required></textarea>
                                         <button id = "add_submit_btn" type="submit" class="success">Add</button>
                                     </div>

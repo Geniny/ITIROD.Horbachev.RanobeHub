@@ -1,5 +1,5 @@
-let Header = {
-    render: async () => {
+class Header {
+    async render(){
         let view =
         `
         <div class="auth_container">
@@ -48,8 +48,8 @@ let Header = {
         </div>
         `
         return view
-    },
-    after_render: async () => {
+    }
+    async after_render(){
         document.getElementById("signin_btn").addEventListener("click", () => {
             document.getElementById("signin_form").style.display = 'block';
         })
@@ -130,4 +130,4 @@ let Header = {
 
 }
 
-export default Header;
+export default new Header();
