@@ -628,6 +628,7 @@ height: 35px;
 .chapter-versions {
   display: flex;
   flex-flow: row nowrap;
+  gap: 1%
 }
 
 .chapter-add {
@@ -650,9 +651,21 @@ height: 35px;
   flex: 1 1 200px;
   height: 60px;
   max-width: 25%;
-  border: 2px solid black;
+  background-color: #e2e2e2;
+  border-top: 2px solid orange;
+  border-left: 2px solid orange;
+  border-right: 2px solid orange;
   font-size: 2vw;
   padding: 10px 5px;
+}
+
+span.chapter-version:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+span.active{
+  background-color: white;
 }
 
 .chapter-header {
@@ -678,6 +691,7 @@ height: 35px;
 
 hr {
   color: orange;
+  display: block;
 }
 
 .chapter-text-container {

@@ -15,7 +15,7 @@ class Ranobe {
             if (doc.exists) {
                 console.log("Document data:", doc.data());
                 this.view =
-                    `
+                `
                 <main id="ranobePage">
                     <div class="ranobe-content">
                         <div class="ranobe-img">

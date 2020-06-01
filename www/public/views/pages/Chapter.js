@@ -160,6 +160,10 @@ class Chapter {
                 span.className = 'chapter-version';
                 span.setAttribute('id', element.id);
                 span.addEventListener("click", () => {
+                    var active = document.getElementsByClassName('chapter-version active');
+                    for (let item of active) {
+                        item.classList.remove('active');
+                    }
                     chapterPage.removeChild(document.getElementsByClassName('chapter-text')[0]);
                     let text = document.createElement('div');
                     text.style.display = 'block';
@@ -167,11 +171,15 @@ class Chapter {
                     text.setAttribute('id', element.id + '-text');
                     text.innerHTML = element.data().text;
                     chapterPage.appendChild(text);
+                    span.className = 'chapter-version active';
                 });
                 span.innerHTML = element.data().name;
                 chapterVersions.appendChild(span);
                 this.translatesCount ++;
             });
+
+            let defSpan = document.getElementById(this.translates.docs[0].id);
+            defSpan.className = 'chapter-version active';
         }
     }
 }
