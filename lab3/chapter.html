@@ -2,250 +2,125 @@
 <html>
 
 <head>
+    <title>RanobeHub</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8" />
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
-    <header>
-        <div class="auth_container">
-            <button id="signin_btn" onclick="signIn()">Sign
-                In</button>
-            <button id="signup_btn" onclick="signUp()">Sign
-                Up</button>
+    <header id="header_container">
+		<div class="auth_container">
+            <button id="signin_btn">Sign
+                    In</button>
+            <button id="signup_btn">Sign
+                    Up</button>
         </div>
-    </header>
 
-    <nav id="navbar">
-        <a class="active" href="index.html">RanobeHub</a>
-        <button onclick="profile()"><i class="fa fa-user"></i> Profile</button>
-    </nav>
-
-    <div id="signin_form" class="modal">
-        <form class="modal-content" action="/action_page.php" method="post">
-            <div class="container">
-                <span onclick="closeSignIn()" class="close" title="Close Modal">&times;</span>
-                <h1>Sign In</h1>
-                <hr>
-                <label for="uname"><b>Username</b></label>
-                <input class="login_input" type="text" placeholder="Enter Username" name="uname" required>
-                <label for="psw"><b>Password</b></label>
-                <input class="login_input" type="password" placeholder="Enter Password" name="psw" required>
-                <button type="submit" class="success">Login</button>
-            </div>
-        </form>
-    </div>
-
-    <div id="signup_form" class="modal">
-        <form class="modal-content" action="/action_page.php">
-            <div class="container">
-                <span onclick="closeSignUp()" class="close" title="Close Modal">&times;</span>
-                <h1>Sign Up</h1>
-                <hr>
-                <label for="email"><b>Email</b></label>
-                <input class="login_input" type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input class="login_input" type="password" placeholder="Enter Password" name="psw" required>
-
-                <label for="psw-repeat"><b>Repeat Password</b></label>
-                <input class="login_input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                <button type="submit" class="success">Sign Up</button>
-            </div>
-        </form>
-    </div>
-
-    <div id="profile_container" class="modal">
-        <div class="modal-content">
-            <div class="user-container">
-                <img src="img/screen.jpg" height="300px" width="300px">
-                <div class="user-info">
-                    <span onclick="document.getElementById('profile_container').style.display='none'" class="close"
-                        title="Close Modal">&times;</span>
-                    <h1>Status: user</h1>
-                    <h1>Email: user@mail.ru</h1>
+        <div id="signin_form" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <div class = "close">
+                        <button id = "signin_close" title="Close Modal">&times;</button>
+                    </div>
+                    <h1>Sign In</h1>
+                    <hr>
+                    <label for="uname"><b>Username</b></label>
+                    <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="psw"><b>Password</b></label>
+                    <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" name="psw" required>
+                    <button id = "signin_submit_btn" type="submit" class="success">Sign In</button>
                 </div>
             </div>
         </div>
+
+        <div id="signup_form" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <div class = "close">
+                        <button id = "signup_close" title="Close Modal">&times;</button>
+                    </div>
+                    <h1>Sign Up</h1>
+                    <hr>
+                    <label for="email_field_r"><b>Email</b></label>
+                    <input id = "email_field_r" class="login_input" type="text" placeholder="Enter Email" required>
+
+                    <label for="password_field_r"><b>Password</b></label>
+                    <input id = "password_field_r" class="login_input" type="password" placeholder="Enter Password" required>
+
+                    <label for="repeat_password_field_r"><b>Repeat Password</b></label>
+                    <input id = "repeat_password_field_r" class="login_input" type="password" placeholder="Repeat Password" required>
+                    <button id = "signup_submit_btn" type="submit" class="success">Sign Up</button>
+                </div>
+            </div>
+        </div>
+	</header>
+    <nav id="navbar">
+		<a class="active" href="/#/">RanobeHub</a>
+            <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
+
+            <div id="profile_container" class="modal">
+            <div class="modal-content">
+                <div class="user-container">
+                    <img src="img/screen.jpg" height="300px" width="300px">
+                    <div class="user-info">
+                        <div class = "close">
+                            <button id = "profile_close" title="Close Modal">&times;</button>
+                        </div>
+                        <div class = "text"> 
+                            <h1 id = "u_status"></h1>
+                            <h1 id = "u_email"></h1>
+                        </div>
+                        <button id="logout_btn" class="danger"> Logout </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</nav>
+
+    <div id="page_container" class="container pageEntry">
+        <main id="chapterPage">
+                            <header class="chapter-header">
+                                <a href="#/ranobe/oregairu-8" class="ranobe-name">Oregairu</a>
+                                <div class="chapter-name">FirstChapter</div>
+                            </header>
+                            <div>
+                                <div class="chapter-versions">                  
+                                <span class="chapter-version active" id="0">ru-translate</span><span class="chapter-version" id="1">eng-translate-2</span></div>
+                                <hr>
+                            </div>
+                            <div class="chapter-text-container"><div style="display: block;" class="chapter-text" id="0-text">There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.</div></div>
+                            <div class="chapter-actions">
+                                <a id="previous">«</a>
+                                <a id="next">»</a>
+                            </div>
+                            <div id="add_form" class="modal">
+                                <div class="modal-content">
+                                    <div class="container">
+                                        <span id="add_chp_close" class="close" title="Close Modal">×</span>
+                                        <h1>Add chapter</h1>
+                                        <hr>
+                                        <label for="version"><b>Version name</b></label>
+                                        <input id="chp_version_name" class="login_input" type="text" placeholder="Enter version name" name="version" required="">                                       
+                                        <label for="chp_text"><b>Chapter text</b></label>
+                                        <textarea id="chp_textarea" class="text-input" name="chp_text" placeholder="Enter text" required=""></textarea>
+                                        <button id="add_submit_btn" type="submit" class="success">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
     </div>
 
-    <main id="chapterPage">
-        <div class="chapter-header">
-            <a href="ranobe.html" class="ranobe-name"> Ranobe name </a>
-            <div class="chapter-name"> Chapter name </div>
-        </div>
-        <div class="chapter-versions">
-            <span id='first-version' onClick="loadText('first-version-text')" class="chapter-version">
-                first version
-            </span>
-
-            <span id='second-version' onClick="loadText('second-version-text')" class="chapter-version">
-                second version
-            </span>
-        </div>
-        <hr>
-        <div class="chapter-text" id='first-version-text'>
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-        </div>
-        <div class="chapter-text" id='second-version-text' style="display: none;">
-            SECOND
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-            There are quite a few variations possible in which we can style the indicator. Especially, the semantic
-            color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the
-            proximity of the reading position from the end of the article.
-        </div>
-    </main>
-
-
-
-    
-    <footer>
+    <footer id="footer_container">
         <hr>
         <a href="https://github.com/Geniny">
-            <img src="img/git.png">
+            <img id = "footer_img">
         </a>
         <p>Created by Dmitriy Horbachev</p> 
-    </footer>
-
-    <script>
-
-        var signin_form = document.getElementById('signin_form');
-        var signup_form = document.getElementById('signup_form');
-        var progress = document.getElementById("progress_bar");
-        var profile_container = document.getElementById('profile_container');
-
-
-        function signIn() {
-            signin_form.style.display = 'block';
-        }
-
-        function signUp() {
-            signup_form.style.display = 'block';
-        }
-
-        function profile() {
-            profile_container.style.display = 'block';
-        }
-
-
-
-        function closeSignUp() {
-            signup_form.style.display = 'none'
-        }
-
-        function closeSignIn() {
-            signin_form.style.display = 'none'
-        }
-
-        function loadText(str) {
-            var elements = document.getElementsByClassName("chapter-text");
-            var index;
-            for (index = 0; index < elements.length; ++index) {
-                elements[index].style.display = 'none';
-            }
-            var todisplay = document.getElementById(str);
-            todisplay.style.display = 'block';
-        }
-
-        window.onclick = function (event) {
-            if (event.target == profile_container) {
-                profile_container.style.display = "none";
-            }
-            if (event.target == signin_form) {
-                signin_form.style.display = "none";
-            }
-            if (event.target == signup_form) {
-                signup_form.style.display = "none";
-            }
-        }
-
-
-        var max = document.body.clientHeight - window.innerHeight;
-        progress.setAttribute('max', max);
-
-        window.onscroll = function () { myFunction() };
-
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky");
-                progress.style.display = 'block';
-            } else {
-                navbar.classList.remove("sticky");
-                progress.style.display = 'none';
-            }
-            value = window.scrollY;
-            progress.setAttribute('value', value + 100);
-        }
-    </script>
+	</footer>
 </body>
+
 
 </html>

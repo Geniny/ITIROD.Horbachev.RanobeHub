@@ -40,11 +40,28 @@
   color: white;
 }
 
+.dropdown-content button {
+  float: none;
+  color: black;
+  width: 100%;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 17px;
+  color: white;
+  background-image: none; 
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+
 .auth_container {
-  margin-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
-  float: right;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
   position: relative;
   min-width: 5%;
 }
@@ -56,6 +73,12 @@
 .dropdown-content a:hover {
     background-color: #ddd;
     border-radius: 5px;
+}
+
+.dropdown-content button:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content {
@@ -79,7 +102,7 @@ body {
   background-color: #e2e2e2;
 }
 
-header {
+header#header_container {
   background-image: url("img/screen.jpg");
   min-height: 100px;
   background-position: center;
@@ -106,7 +129,6 @@ header {
 }
 
 #navbar progress {
-  /* Positioning */
   z-index: 5;
 
   width: 100%;
@@ -136,7 +158,7 @@ header {
   background-color: red;
 }
 
-#navbar button { 
+#navbar>button { 
   background-color: #333;
   border: none; 
   color: white; 
@@ -145,6 +167,7 @@ header {
   cursor: pointer;
   float: right;
   margin-right: 5%;
+  display: none;
 }
 
 #navbar a:hover {
@@ -204,14 +227,14 @@ p[class |="text2"]{
 }
 
 
-form.search {
+div.search {
     width: 81%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-form.search input[type=text] {
+div.search input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -220,7 +243,7 @@ form.search input[type=text] {
     border-radius: 5px;
 }
 
-form.search button {
+div.search button {
     width: 5%;
     padding: 10px;
     background: orange;
@@ -252,6 +275,8 @@ main {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1rem;
+    margin-left: 0; 
+    padding-left: 0;
 }
 
 /* RANOBE----------------------------------------------------------------------------------------------------------------------------- */
@@ -263,7 +288,8 @@ main {
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
     border-left: 1px solid orange;
-    border-right: 1px solid orange;
+    border-right: 1px solid orange; 
+    list-style-type: none;
 }
 
 .status-label {
@@ -312,13 +338,15 @@ main {
 }
 
 .ranobe-column img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  max-height: 450px;
+  display: block;
 }
 
-.ranobe-img {
-    max-width: 100%;
-    height: auto;
+.ranobe-img img{
+    width: 100%;
+    min-height: 400px;
+    max-height: 600px;
     display: block;
 }
 
@@ -328,12 +356,9 @@ main {
     padding-right: auto;
 }
 
+
 .ranobe-info>h2{
   text-align: left;
-}
-
-.ranobe-info>h1{
-  text-align: center;
 }
 
 .ranobe-info {
@@ -342,18 +367,7 @@ main {
   padding-right: 15px;
 }
 
-#readnow {
-border: 2px solid orange;
-background-color: white;
-color: orange;
-padding: 14px 28px;
-font-size: 17px;
-cursor: pointer;
-border-radius: 5px;
-text-decoration: none;
-float: right;
-margin-top: 100px;
-}
+
 
 #readnow:hover{
 
@@ -372,19 +386,77 @@ color: white;
   flex-flow: row wrap;
 }
 
-.ranobe-img>img{
-max-width: 100%;
-height: 500px;
+.ranobe-content-info{
+  flex: 1 1 300px;
+  display: flex; 
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 70%;
 }
 
-.rating {
-  unicode-bidi: bidi-override;
+.ranobe-header {
+  width: 100%;
+}
+
+.ranobe-header > h1{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ranobe-header > hr {
+  color: orange;
+}
+
+.ranobe-action {
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.ranobe-action>a {
+  border: 2px solid orange;
+  background-color: white;
+  color: orange;
+  padding: 14px 28px;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  float: right;
+}
+
+#rnb_rate {
+  color: #000;
+  font-size: 45px;
+}
+
+#rnb_rate:hover {
+  color: yellow;
+  font-size: 45px;
+  cursor: pointer;
+}
+
+.ranobe-img {
+  flex: 2 2  200px;
+  width: 30%;
+  max-width: 450px;
+}
+
+.ranobe-img>img{
+  max-width: 100%;
+  height: 500px;
+}
+
+.rating .checked {
+  color: orange;
+  font-size: 35px;
 }
 
 .rating > label {
   color: #000;
   font-size: 35px;
 }
+
 
 #ranobePage > a {
   color: orange;
@@ -394,12 +466,13 @@ height: 500px;
 /* ----------------------------------------------------------------------------------------------------------------------------------- */
 
 .login_input {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-box-sizing: border-box;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: block;
 }
 
 #signin_btn {
@@ -410,6 +483,7 @@ padding: 14px 20px;
 margin: 8px 0;
 cursor: pointer;
 float: left;
+display: none;
 }
 
 #signup_btn {
@@ -420,6 +494,7 @@ padding: 14px 20px;
 margin: 8px 0;
 cursor: pointer;
 float: left;
+display: none;
 }
 
 button:hover {
@@ -427,6 +502,11 @@ opacity: 0.8;
 }
 .container {
 padding: 16px;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 span.psw {
@@ -460,25 +540,64 @@ font-size: 25px;
 .user-container>.user-info{
   flex: 100px;
   padding-left: 10px;
-  padding-right: 10px;
 }
 
 .user-container>img{
   flex: 0 1 400px;
   min-width: 100px;
+  min-height: 250px;
+  border-radius: 50%;
 }
 
-.user-info h1{
-font-size: 20px;
+.user-info {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.text>h1{
+  font-size: 20px;
+}
+
+.user-info span{
+  align-self: flex-end;
+  margin-right: 1%;
+}
+
+.user-info>button {
+  flex: 0 0 50px;
+  max-width: 100px;
+  max-height: 45px;
+  align-self: flex-end;
+  border: 2px solid red;
+  background-color: white;
+  color: red;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+  border-radius: 5px;
+  margin-right: 1%;
+  margin-bottom: 1%;
 }
 
 .modal-content {
-background-color: #fefefe;
-margin: 15% auto 15% auto;
-border: 1px solid #888;
-width: 50%; 
-border: 2px solid orange;
-border-radius: 5px;
+  background-color: #fefefe;
+  margin: 10% auto 15% auto;
+  border: 1px solid #888;
+  width: 50%; 
+  border: 2px solid orange;
+  border-radius: 5px;
+}
+
+.danger {
+  border-color: #f44336;
+  color: red
+}
+
+.danger:hover {
+  background: #f44336;
+  color: white;
 }
 
 .success {
@@ -490,76 +609,183 @@ height: 35px;
 .success:hover {background-color: #46a049;}
 
 
-.close {
-  float: right;
-  display: block;
-  color: #000;
-  font-size: 35px;
+.close
+{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  width: 100%;
 }
 
-.close:hover {
+.close button{
+  color: #000;
+  font-size: 35px;
+  background-image: none; 
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+
+.close button:hover {
   color: red;
   cursor: pointer;
 }
 
 /* CHAPTER --------------------------------------------------------------------------------------------------------------------------*/
 
+.text-input {
+  height: 300px;
+  width: 100%;
+  resize: none;
+}
+
+.chapter-actions {
+  padding-bottom: 20px;
+}
+
+#previous {
+  float: left;
+  display: none;
+}
+
+#next {
+  float: right;
+  display: none;
+}
+
+.chapter-actions a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 50px; 
+   text-decoration: none;
+   color: orange;
+}
+
 .chapter-versions {
   display: flex;
   flex-flow: row nowrap;
+  gap: 1%
+}
+
+.chapter-add {
+  border: 2px solid green;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  height: 60px;
+  margin-right: 10px;
+  font-size: 2vw;
+}
+
+.chapter-add:hover {
+  cursor: pointer;
+  background-color: green;
+  color: white;
 }
 
 .chapter-version {
   flex: 1 1 200px;
   height: 60px;
   max-width: 25%;
-  border: 2px solid black;
+  background-color: #e2e2e2;
+  border-top: 2px solid orange;
+  border-left: 2px solid orange;
+  border-right: 2px solid orange;
   font-size: 2vw;
   padding: 10px 5px;
 }
 
+span.chapter-version:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+span.active{
+  background-color: white;
+}
+
 .chapter-header {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  text-decoration: solid;
+  flex-flow: column nowrap;
   padding-top: 3%;
   padding-bottom: 3%;
-  gap: 25%;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
 }
 
 .chapter-header > .ranobe-name {
   color: black;
   text-shadow: black;
-  font-size: 30px;
+  font-size: 5vw;
 }
 
 .chapter-header > .chapter-name {
   text-decoration: none;
-  font-size: 28px;
+  font-size: 3vw;
 }
 
 hr {
   color: orange;
-}
-
-.chapter-text {
-  font-size: 25px;
-  padding-top: 10px;
   display: block;
 }
 
+.chapter-text-container {
+  margin-bottom: 10px;
+}
+
+.chapter-text {
+  font-size: 2vw;
+  padding-top: 10px;
+}
+
 #chapterPage {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
   margin-top: 20px;
   padding-left: 5%;
   padding-right: 5%;
   background-color: white;
+  border-radius: 5px;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------------*/
 
+#errorPage {
+  max-width: 1300px;
+  height: 550px;
+  overflow: hidden;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: Helvetica;
+  background: url('img/404.gif') no-repeat 100% 50%;
+}
+
+.center h1 {
+  font-size: 144px;
+  font-weight: 100;
+  color: white;
+}
+
+
 
 @media screen and (max-width: 500px) {
+
+  .dropdown-content button {
+    font-size: 2vw;
+  }
+
+  #error-page { 
+    max-width: 500px;
+    height: 550px;
+  }
+
   span.psw {
     display: block;
     float: none;
@@ -598,7 +824,7 @@ hr {
   }
 
   .chapter-version > h1 {
-    font-size: 12px;
+    font-size: 4vw;
   }
 
   .chapter-header > .ranobe-name {
@@ -609,12 +835,37 @@ hr {
     font-size: 18px;
   }
 
-  .chapter-version {
+  .chapter-version,.chapter-add {
     height: 40px;
   }
 
   .chapter-text {
     font-size: 17px;
+  }
+
+  .user-info>button {
+    padding: 8px 14px;
+  }
+
+  .ranobe-info>h2{
+    font-size: 17px;
+  }
+  
+  .ranobe-info>h1{
+    font-size: 23px;
+  }
+
+  .footer img {
+    height: 25px;
+    width: 25px;
+  }
+  .footer p {
+    font-size: 10px;
+  }
+
+  .modal-content {
+    margin: 15% auto 10% auto;
+    width: 75%; 
   }
 }
 
