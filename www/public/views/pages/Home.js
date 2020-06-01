@@ -8,7 +8,7 @@ let render_ranobes = async (ranobes) => {
     ranobe_content.innerHTML = "";
     ranobes = await ranobes.get();
     ranobes.forEach(element => {
-        let rnb = document.createElement('div');
+        let rnb = document.createElement('li');
         rnb.className = 'ranobe-column';
 
         let ref = document.createElement('a');
@@ -53,8 +53,8 @@ class Home {
                     <button class="dropbtn">Filters
                     </button>
                     <div class="dropdown-content">
-                        <span id ="name_filter">Name</span>
-                        <span id = "rating_filter">Rating</spam>
+                        <button id ="name_filter">Name</button>
+                        <button id = "rating_filter">Rating</button>
                     </div>
                 </div>
                 <div class="search">
@@ -63,8 +63,8 @@ class Home {
                 </div>
             </div>
 
-            <div class="ranobe-content">
-            </div>
+            <ul class="ranobe-content">
+            </ul>
         </main>
         `
         return view

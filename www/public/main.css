@@ -40,21 +40,28 @@
   color: white;
 }
 
-.dropdown-content span {
+.dropdown-content button {
   float: none;
   color: black;
+  width: 100%;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
+  font-size: 17px;
   color: white;
+  background-image: none; 
+  background-color: transparent;
+  outline: none;
+  border: 0;
 }
 
 .auth_container {
-  margin-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
-  float: right;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
   position: relative;
   min-width: 5%;
 }
@@ -68,7 +75,7 @@
     border-radius: 5px;
 }
 
-.dropdown-content span:hover {
+.dropdown-content button:hover {
   background-color: #ddd;
   border-radius: 5px;
   cursor: pointer;
@@ -95,7 +102,7 @@ body {
   background-color: #e2e2e2;
 }
 
-header {
+header#header_container {
   background-image: url("img/screen.jpg");
   min-height: 100px;
   background-position: center;
@@ -268,6 +275,8 @@ main {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1rem;
+    margin-left: 0; 
+    padding-left: 0;
 }
 
 /* RANOBE----------------------------------------------------------------------------------------------------------------------------- */
@@ -279,7 +288,8 @@ main {
     border-top: 1px solid orange;
     border-bottom: 1px solid orange;
     border-left: 1px solid orange;
-    border-right: 1px solid orange;
+    border-right: 1px solid orange; 
+    list-style-type: none;
 }
 
 .status-label {
@@ -335,7 +345,8 @@ main {
 
 .ranobe-img img{
     width: 100%;
-    height: 500px;
+    min-height: 400px;
+    max-height: 600px;
     display: block;
 }
 
@@ -355,6 +366,8 @@ main {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+
 
 #readnow:hover{
 
@@ -395,6 +408,8 @@ color: white;
 }
 
 .ranobe-action {
+  padding-left: 15px;
+  padding-right: 15px;
   width: 100%;
 }
 
@@ -408,7 +423,17 @@ color: white;
   border-radius: 5px;
   text-decoration: none;
   float: right;
-  margin-top: 7%;
+}
+
+#rnb_rate {
+  color: #000;
+  font-size: 45px;
+}
+
+#rnb_rate:hover {
+  color: yellow;
+  font-size: 45px;
+  cursor: pointer;
 }
 
 .ranobe-img {
@@ -421,11 +446,6 @@ color: white;
   max-width: 100%;
   height: 500px;
 }
-
-.rating {
-  unicode-bidi: bidi-override;
-}
-
 
 .rating .checked {
   color: orange;
@@ -446,13 +466,13 @@ color: white;
 /* ----------------------------------------------------------------------------------------------------------------------------------- */
 
 .login_input {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-box-sizing: border-box;
-display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: block;
 }
 
 #signin_btn {
@@ -482,6 +502,11 @@ opacity: 0.8;
 }
 .container {
 padding: 16px;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 span.psw {
@@ -520,6 +545,7 @@ font-size: 25px;
 .user-container>img{
   flex: 0 1 400px;
   min-width: 100px;
+  min-height: 250px;
   border-radius: 50%;
 }
 
@@ -583,14 +609,24 @@ height: 35px;
 .success:hover {background-color: #46a049;}
 
 
-.close {
-  float: right;
-  display: block;
-  color: #000;
-  font-size: 35px;
+.close
+{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  width: 100%;
 }
 
-.close:hover {
+.close button{
+  color: #000;
+  font-size: 35px;
+  background-image: none; 
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+
+.close button:hover {
   color: red;
   cursor: pointer;
 }
@@ -741,6 +777,10 @@ hr {
 
 @media screen and (max-width: 500px) {
 
+  .dropdown-content button {
+    font-size: 2vw;
+  }
+
   #error-page { 
     max-width: 500px;
     height: 550px;
@@ -821,6 +861,11 @@ hr {
   }
   .footer p {
     font-size: 10px;
+  }
+
+  .modal-content {
+    margin: 15% auto 10% auto;
+    width: 75%; 
   }
 }
 

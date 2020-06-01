@@ -6,26 +6,27 @@ class Navbar {
 
     async render() {
         let view =
-            `    
-        <a class="active" href="/#/">RanobeHub</a>
-        <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
+        `    
+            <a class="active" href="/#/">RanobeHub</a>
+            <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
 
-        <div id="profile_container" class="modal">
-        <div class="modal-content">
-            <div class="user-container">
-                <img src="img/screen.jpg" height="300px" width="300px">
-                <div class="user-info">
-                    <span id="profile_close" class="close"
-                        title="Close Modal">&times;</span>
-                    <div class = "text"> 
-                        <h1 id = "u_status"></h1>
-                        <h1 id = "u_email"></h1>
+            <div id="profile_container" class="modal">
+            <div class="modal-content">
+                <div class="user-container">
+                    <img src="img/screen.jpg" height="300px" width="300px">
+                    <div class="user-info">
+                        <div class = "close">
+                            <button id = "profile_close" title="Close Modal">&times;</button>
+                        </div>
+                        <div class = "text"> 
+                            <h1 id = "u_status"></h1>
+                            <h1 id = "u_email"></h1>
+                        </div>
+                        <button id="logout_btn" class="danger"> Logout </button>
                     </div>
-                    <button id="logout_btn" class="danger"> Logout </button>
                 </div>
             </div>
         </div>
-    </div>
         `
         return view
     }

@@ -18,8 +18,6 @@ const routes = {
     '/ranobe/:id/chapter/:id': Chapter
 };
 
-
-
 class Main {
     constructor() 
     {

@@ -33,12 +33,12 @@ class Chapter {
                     if (cdoc.exists) {
                         console.log("Document data:", cdoc.data());
                         this.view =
-                            ` 
+                        ` 
                         <main id="chapterPage">
-                            <div class="chapter-header">
+                            <header class="chapter-header">
                                 <a href="#/ranobe/${this.ranobe.id}" class="ranobe-name">${this.ranobe.data().name}</a>
                                 <div class="chapter-name"></div>
-                            </div>
+                            </header>
                             <div>
                                 <div class="chapter-versions">                  
                                 </div>

@@ -17,29 +17,43 @@ class Ranobe {
                 this.view =
                 `
                 <main id="ranobePage">
-                    <div class="ranobe-content">
+                    <article class="ranobe-content">
                         <div class="ranobe-img">
                         </div>
                         <div class = "ranobe-content-info">
-                            <div class = "ranobe-header">
+                            <header class = "ranobe-header">
                                 <h1 id = 'rnb_name'></h1>
                                 <hr />
-                            </div>
+                            </header>
                             <div class="ranobe-info">
                                 <h2 id = "rnb_status"></h2>
                                 <h2 id = 'rnb_genre'></h2>
                                 <h2 id = "rnb_author"></h2>
                                 <h2 id = "rnb_year"></h2>
                                 <div class="rating">
-                                    <label id = "1-rt">☆</label>
-                                    <label id = '2-rt'>☆</label>
+                                    <label id = "rt-1">☆</label>
+                                    <label id = 'rt-2'>☆</label>
                                     <label id = '3-rt'>☆</label>
                                     <label id = '4-rt'>☆</label>
                                     <label id = '5-rt'>☆</label>
                                 </div>
                             </div>
                             <div class = "ranobe-action">
+                                <span id = "rnb_rate">☆</span>
                                 <a id="readnow">Read now</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div id="rate_form" class="modal">
+                        <div class="modal-content">
+                            <div class="container">
+                                <div class = "close">
+                                    <button id = "rate_close" title="Close Modal">&times;</button>
+                                </div>
+                                <h1>Rate this title</h1>
+                                <hr>
+                                <i class="far fa-meh-rolling-eyes"></i>
                             </div>
                         </div>
                     </div>
@@ -59,8 +73,8 @@ class Ranobe {
 
     async after_render() {
         if (this.ranobe != null) {
-            let rt_1 = document.getElementById("1-rt");
-            let rt_2 = document.getElementById("2-rt");
+            let rt_1 = document.getElementById("rt-1");
+            let rt_2 = document.getElementById("rt-2");
             let rt_3 = document.getElementById("3-rt");
             let rt_4 = document.getElementById("4-rt");
             let rt_5 = document.getElementById("5-rt");
@@ -72,6 +86,15 @@ class Ranobe {
             let read = document.getElementById("readnow");
             let ranobe_img = document.getElementsByClassName("ranobe-img")[0];
             let img = document.createElement('img')
+            let rate_btn = document.getElementById('rnb_rate');
+
+            rate_btn.addEventListener("click", () => {
+                document.getElementById("rate_form").style.display = 'block';
+            })
+            document.getElementById("rate_close").addEventListener("click", () => {
+                document.getElementById("rate_form").style.display = 'none';
+            })
+
             img.setAttribute('id', this.ranobe.id);
             ranobe_img.appendChild(img);
 
