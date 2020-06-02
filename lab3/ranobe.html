@@ -27,10 +27,10 @@
                     </div>
                     <h1>Sign In</h1>
                     <hr>
-                    <label for="uname"><b>Username</b></label>
-                    <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="psw"><b>Password</b></label>
-                    <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="email_field"><b>Username</b></label>
+                    <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" required>
+                    <label for="password_field"><b>Password</b></label>
+                    <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" required>
                     <button id = "signin_submit_btn" type="submit" class="success">Sign In</button>
                 </div>
             </div>
@@ -61,10 +61,16 @@
 		<a class="active" href="/#/">RanobeHub</a>
         <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
 
-            <div id="profile_container" class="modal">
+        <div id="profile_container" class="modal">
             <div class="modal-content">
                 <div class="user-container">
-                    <img src="img/screen.jpg" height="300px" width="300px">
+                    
+                <label for="file_field">
+                    <a id = "get_img_btn" style="cursor: pointer;">
+                        <img id = 'profile_img' height = "300px" width = "300px">
+                    </a>
+                </label> 
+                <input type="file" id="file_field" style="display: none;">
                     <div class="user-info">
                         <div class = "close">
                             <button id = "profile_close" title="Close Modal">&times;</button>
@@ -73,7 +79,10 @@
                             <h1 id = "u_status"></h1>
                             <h1 id = "u_email"></h1>
                         </div>
-                        <button id="logout_btn" class="danger"> Logout </button>
+                        <div class='profile-actions'>
+                            <button id = "upload_btn" > Upload </button>
+                            <button id = "logout_btn" class="danger"> Logout </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,15 +90,15 @@
 	</nav>
 
     <div id="page_container" class="container pageEntry">
-        <main id="ranobePage">
+	<main id="ranobePage">
                     <article class="ranobe-content">
                         <div class="ranobe-img">
                         </div>
                         <div class = "ranobe-content-info">
                             <header class = "ranobe-header">
                                 <h1 id = 'rnb_name'></h1>
-                                <hr />
                             </header>
+                            <hr />
                             <div class="ranobe-info">
                                 <h2 id = "rnb_status"></h2>
                                 <h2 id = 'rnb_genre'></h2>
@@ -110,9 +119,8 @@
                     </article>
                 </main>
     </div>
-
+    <hr>
     <footer id="footer_container">
-        <hr>
         <a href="https://github.com/Geniny">
             <img id = "footer_img">
         </a>

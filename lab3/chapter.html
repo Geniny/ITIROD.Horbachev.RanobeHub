@@ -27,10 +27,10 @@
                     </div>
                     <h1>Sign In</h1>
                     <hr>
-                    <label for="uname"><b>Username</b></label>
-                    <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="psw"><b>Password</b></label>
-                    <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="email_field"><b>Username</b></label>
+                    <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" required>
+                    <label for="password_field"><b>Password</b></label>
+                    <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" required>
                     <button id = "signin_submit_btn" type="submit" class="success">Sign In</button>
                 </div>
             </div>
@@ -59,12 +59,18 @@
 	</header>
     <nav id="navbar">
 		<a class="active" href="/#/">RanobeHub</a>
-            <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
+        <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
 
-            <div id="profile_container" class="modal">
+        <div id="profile_container" class="modal">
             <div class="modal-content">
                 <div class="user-container">
-                    <img src="img/screen.jpg" height="300px" width="300px">
+                    
+                <label for="file_field">
+                    <a id = "get_img_btn" style="cursor: pointer;">
+                        <img id = 'profile_img' height = "300px" width = "300px">
+                    </a>
+                </label> 
+                <input type="file" id="file_field" style="display: none;">
                     <div class="user-info">
                         <div class = "close">
                             <button id = "profile_close" title="Close Modal">&times;</button>
@@ -73,7 +79,10 @@
                             <h1 id = "u_status"></h1>
                             <h1 id = "u_email"></h1>
                         </div>
-                        <button id="logout_btn" class="danger"> Logout </button>
+                        <div class='profile-actions'>
+                            <button id = "upload_btn" > Upload </button>
+                            <button id = "logout_btn" class="danger"> Logout </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,40 +90,40 @@
 	</nav>
 
     <div id="page_container" class="container pageEntry">
-        <main id="chapterPage">
-                            <header class="chapter-header">
-                                <a href="#/ranobe/oregairu-8" class="ranobe-name">Oregairu</a>
-                                <div class="chapter-name">FirstChapter</div>
-                            </header>
+		<main id="chapterPage">
+            <header class="chapter-header">
+                                <h1 class="ranobe-name"><a href="#/ranobe/${this.ranobe.id}">${this.ranobe.data().name}</a></h1>
+                                <h2 class="chapter-name"></div>
+            </header>
                             <div>
                                 <div class="chapter-versions">                  
-                                <span class="chapter-version active" id="0">ru-translate</span><span class="chapter-version" id="1">eng-translate-2</span></div>
+                                </div>
                                 <hr>
                             </div>
-                            <div class="chapter-text-container"><div style="display: block;" class="chapter-text" id="0-text">There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.             There are quite a few variations possible in which we can style the indicator. Especially, the semantic             color scheme (fourth variation) is a useful experiment, wherein the indicator changes color based on the             proximity of the reading position from the end of the article.</div></div>
-                            <div class="chapter-actions">
-                                <a id="previous">«</a>
-                                <a id="next">»</a>
+                            <div class = "chapter-text-container"></div>
+                            <div class = "chapter-actions">
+                                <a id="previous" >&laquo;</a>
+                                <a id="next" >&raquo;</a>
                             </div>
                             <div id="add_form" class="modal">
                                 <div class="modal-content">
                                     <div class="container">
-                                        <span id="add_chp_close" class="close" title="Close Modal">×</span>
+                                        <span id = "add_chp_close" class="close" title="Close Modal">&times;</span>
                                         <h1>Add chapter</h1>
                                         <hr>
-                                        <label for="version"><b>Version name</b></label>
-                                        <input id="chp_version_name" class="login_input" type="text" placeholder="Enter version name" name="version" required="">                                       
-                                        <label for="chp_text"><b>Chapter text</b></label>
-                                        <textarea id="chp_textarea" class="text-input" name="chp_text" placeholder="Enter text" required=""></textarea>
-                                        <button id="add_submit_btn" type="submit" class="success">Add</button>
+                                        <label for = "chp_version_name"><b>Version name</b></label>
+                                        <input id = "chp_version_name" class="login_input" type="text" placeholder="Enter version name"required>                                       
+                                        <label for = "chp_textarea" ><b>Chapter text</b></label>
+                                        <textarea id = "chp_textarea" class = "text-input" name="chp_text"  placeholder="Enter text" required></textarea>
+                                        <button id = "add_submit_btn" type="submit" class="success">Add</button>
                                     </div>
                                 </div>
-                            </div>
-                        </main>
+                            </div>                
+        </main>
     </div>
 
+    <hr>
     <footer id="footer_container">
-        <hr>
         <a href="https://github.com/Geniny">
             <img id = "footer_img">
         </a>

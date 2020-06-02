@@ -59,12 +59,18 @@
 	</header>
     <nav id="navbar">
 		<a class="active" href="/#/">RanobeHub</a>
-            <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
+        <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
 
-            <div id="profile_container" class="modal">
+        <div id="profile_container" class="modal">
             <div class="modal-content">
                 <div class="user-container">
-                    <img src="img/screen.jpg" height="300px" width="300px">
+                    
+                <label for="file_field">
+                    <a id = "get_img_btn" style="cursor: pointer;">
+                        <img id = 'profile_img' height = "300px" width = "300px">
+                    </a>
+                </label> 
+                <input type="file" id="file_field" style="display: none;">
                     <div class="user-info">
                         <div class = "close">
                             <button id = "profile_close" title="Close Modal">&times;</button>
@@ -73,7 +79,10 @@
                             <h1 id = "u_status"></h1>
                             <h1 id = "u_email"></h1>
                         </div>
-                        <button id="logout_btn" class="danger"> Logout </button>
+                        <div class='profile-actions'>
+                            <button id = "upload_btn" > Upload </button>
+                            <button id = "logout_btn" class="danger"> Logout </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,8 +119,8 @@
         </main>
     </div>
 
+    <hr>
     <footer id="footer_container">
-        <hr>
         <a href="https://github.com/Geniny">
             <img id = "footer_img">
         </a>
