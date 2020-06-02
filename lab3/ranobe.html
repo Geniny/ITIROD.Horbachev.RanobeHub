@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RanobeHub</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header id="header_container">
+		<div class="auth_container">
+            <button id="signin_btn">Sign
+                    In</button>
+            <button id="signup_btn">Sign
+                    Up</button>
+        </div>
+
+        <div id="signin_form" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <div class = "close">
+                        <button id = "signin_close" title="Close Modal">&times;</button>
+                    </div>
+                    <h1>Sign In</h1>
+                    <hr>
+                    <label for="email_field"><b>Username</b></label>
+                    <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" required>
+                    <label for="password_field"><b>Password</b></label>
+                    <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" required>
+                    <button id = "signin_submit_btn" type="submit" class="success">Sign In</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="signup_form" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <div class = "close">
+                        <button id = "signup_close" title="Close Modal">&times;</button>
+                    </div>
+                    <h1>Sign Up</h1>
+                    <hr>
+                    <label for="email_field_r"><b>Email</b></label>
+                    <input id = "email_field_r" class="login_input" type="text" placeholder="Enter Email" required>
+
+                    <label for="password_field_r"><b>Password</b></label>
+                    <input id = "password_field_r" class="login_input" type="password" placeholder="Enter Password" required>
+
+                    <label for="repeat_password_field_r"><b>Repeat Password</b></label>
+                    <input id = "repeat_password_field_r" class="login_input" type="password" placeholder="Repeat Password" required>
+                    <button id = "signup_submit_btn" type="submit" class="success">Sign Up</button>
+                </div>
+            </div>
+        </div>
+	</header>
+    <nav id="navbar">
+		<a class="active" href="/#/">RanobeHub</a>
+        <button id ="profile_btn"><i class="fa fa-user"></i> Profile</button>
+
+        <div id="profile_container" class="modal">
+            <div class="modal-content">
+                <div class="user-container">
+                    
+                <label for="file_field">
+                    <a id = "get_img_btn" style="cursor: pointer;">
+                        <img id = 'profile_img' height = "300px" width = "300px">
+                    </a>
+                </label> 
+                <input type="file" id="file_field" style="display: none;">
+                    <div class="user-info">
+                        <div class = "close">
+                            <button id = "profile_close" title="Close Modal">&times;</button>
+                        </div>
+                        <div class = "text"> 
+                            <h1 id = "u_status"></h1>
+                            <h1 id = "u_email"></h1>
+                        </div>
+                        <div class='profile-actions'>
+                            <button id = "upload_btn" > Upload </button>
+                            <button id = "logout_btn" class="danger"> Logout </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</nav>
+
+    <div id="page_container" class="container pageEntry">
+	<main id="ranobePage">
+                    <article class="ranobe-content">
+                        <div class="ranobe-img">
+                        </div>
+                        <div class = "ranobe-content-info">
+                            <header class = "ranobe-header">
+                                <h1 id = 'rnb_name'></h1>
+                            </header>
+                            <hr />
+                            <div class="ranobe-info">
+                                <h2 id = "rnb_status"></h2>
+                                <h2 id = 'rnb_genre'></h2>
+                                <h2 id = "rnb_author"></h2>
+                                <h2 id = "rnb_year"></h2>
+                                <div class="rating">
+                                    <label id = "rt-1">☆</label>
+                                    <label id = 'rt-2'>☆</label>
+                                    <label id = 'rt-3'>☆</label>
+                                    <label id = 'rt-4'>☆</label>
+                                    <label id = 'rt-5'>☆</label>
+                                </div>
+                            </div>
+                            <div class = "ranobe-action">
+                                <a id="readnow">Read now</a>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+    </div>
+    <hr>
+    <footer id="footer_container">
+        <a href="https://github.com/Geniny">
+            <img id = "footer_img">
+        </a>
+        <p>Created by Dmitriy Horbachev</p> 
+	</footer>
+</body>
+
+
+</html>
