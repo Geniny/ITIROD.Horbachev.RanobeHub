@@ -17,9 +17,9 @@ class Header {
                     </div>
                     <h1>Sign In</h1>
                     <hr>
-                    <label for="uname"><b>Username</b></label>
+                    <label for="email_field"><b>Username</b></label>
                     <input id = "email_field" class="login_input" type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="psw"><b>Password</b></label>
+                    <label for="password_field"><b>Password</b></label>
                     <input id = "password_field" class="login_input" type="password" placeholder="Enter Password" name="psw" required>
                     <button id = "signin_submit_btn" type="submit" class="success">Sign In</button>
                 </div>
