@@ -22,8 +22,8 @@ class Ranobe {
                         <div class = "ranobe-content-info">
                             <header class = "ranobe-header">
                                 <h1 id = 'rnb_name'></h1>
-                                <hr />
                             </header>
+                            <hr />
                             <div class="ranobe-info">
                                 <h2 id = "rnb_status"></h2>
                                 <h2 id = 'rnb_genre'></h2>

@@ -2,7 +2,6 @@ class Footer {
     async render() {
         let view =  
         `
-        <hr>
         <a href="https://github.com/Geniny">
             <img id = "footer_img">
         </a>

@@ -36,8 +36,8 @@ class Chapter {
                         ` 
                         <main id="chapterPage">
                             <header class="chapter-header">
-                                <a href="#/ranobe/${this.ranobe.id}" class="ranobe-name">${this.ranobe.data().name}</a>
-                                <div class="chapter-name"></div>
+                                <h1  class="ranobe-name"><a href="#/ranobe/${this.ranobe.id}">${this.ranobe.data().name}</a></h1>
+                                <h2 class="chapter-name"></div>
                             </header>
                             <div>
                                 <div class="chapter-versions">                  
@@ -56,7 +56,7 @@ class Chapter {
                                         <h1>Add chapter</h1>
                                         <hr>
                                         <label for = "chp_version_name"><b>Version name</b></label>
-                                        <input id = "chp_version_name" class="login_input" type="text" placeholder="Enter version name" name="version" required>                                       
+                                        <input id = "chp_version_name" class="login_input" type="text" placeholder="Enter version name"required>                                       
                                         <label for = "chp_textarea" ><b>Chapter text</b></label>
                                         <textarea id = "chp_textarea" class = "text-input" name="chp_text"  placeholder="Enter text" required></textarea>
                                         <button id = "add_submit_btn" type="submit" class="success">Add</button>
